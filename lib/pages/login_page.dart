@@ -21,6 +21,7 @@ class _LoginPageState extends State<LoginPage> {
   //ontap fonction
   void signUp() async {
     //show loadin circle
+
     showDialog(
       context: context,
       builder: (context) {
@@ -39,9 +40,11 @@ class _LoginPageState extends State<LoginPage> {
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       // pop the loading circle
-      Navigator.pop(context);
+
       //wrong Email
       if (e.code == 'user-not-found') {
+        //show error to user
+
         wrongEmailMessage();
       }
       //wrong Password
@@ -50,6 +53,8 @@ class _LoginPageState extends State<LoginPage> {
         wrongPasswordMessage();
       }
     }
+    // pop the loading circle
+    Navigator.pop(context);
   }
 
   void wrongEmailMessage() {
